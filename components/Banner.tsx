@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Image from 'next/image';
 import NextLink from 'next/link';
 
 import {
@@ -27,7 +28,12 @@ function Banner() {
           gridTemplateColumns={'50px 200px'}
         >
           <GridItem area={'icon'}>
-            <IconButton />
+            <Image
+              alt="Welcome!"
+              src="raven_icon.png"
+              height={50}
+              width={50}
+            />
           </GridItem>
           <GridItem area={'title'}> 
             <NextLink passHref href={'/'}>
