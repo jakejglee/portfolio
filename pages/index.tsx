@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
+// TODO(nubby): Add this in dedicated layout.
 import Banner from "../components/Banner";
 
 export default function Home() {
@@ -20,6 +21,10 @@ export default function Home() {
           <Link href="/formando" className={styles.card}>
             <h3>Formando &rarr;</h3>
             <p>Solve the riddle of Formando to unlock your prize! Written in TypeScript.</p>
+          </Link>
+          <Link href="/sandbox" className={styles.card}>
+            <h3>Sandbox &rarr;</h3>
+            <p>Testing playground.</p>
           </Link>
         </div>
       </main>
