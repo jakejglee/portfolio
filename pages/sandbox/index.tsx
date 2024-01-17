@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 
 import Banner from '../../components/Banner';
-import InputArrayBuilder from '../../components/InputArrayBuilder';
+import InputArray from '../../components/InputArray/InputArray';
 import styles from '../../styles/Home.module.css';
 
 function Sandbox() {
@@ -13,12 +13,14 @@ function Sandbox() {
     register,
     formState: { isDirty },
     getValues,
+    setValue,
     handleSubmit,
   } = useForm<FieldValues>({
     defaultValues: {
       test: ["default"]
     }
   });
+  const values = getValues("test");
 
   const onSubmit = (args) => {
     console.log(args)
@@ -30,13 +32,12 @@ function Sandbox() {
       <main>
         <h1>Fun stuff lives here.</h1>
         <chakra.form id="test-form" onSubmit={handleSubmit(onSubmit)}>
-          <p className={styles.grid}>
-            <InputArrayBuilder
-              getValues={getValues}
+            <InputArray
+              values={values}
               name="test"
               register={register}
+              setValue={setValue}
             />
-          </p>
           <Button
             type="submit"
           >

@@ -28,7 +28,7 @@ function InputArrayBuilder({
     <InputGroup>
       <VStack>
         <div>
-          {values?.map((val) => {
+          {values && values?.map((val) => {
             return (
               <Box>{val}</Box>
               )
