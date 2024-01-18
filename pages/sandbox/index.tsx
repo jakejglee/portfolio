@@ -20,10 +20,9 @@ function Sandbox() {
       test: ["default"]
     }
   });
-  const values = getValues("test");
 
   const onSubmit = (args) => {
-    console.log(args)
+    console.log("Moo.")
   }
 
   return (
@@ -32,12 +31,10 @@ function Sandbox() {
       <main>
         <h1>Fun stuff lives here.</h1>
         <chakra.form id="test-form" onSubmit={handleSubmit(onSubmit)}>
-            <InputArray
-              values={values}
-              name="test"
-              register={register}
-              setValue={setValue}
-            />
+          <InputArray
+            defaultValues={null}
+            name="test"
+          />
           <Button
             type="submit"
           >

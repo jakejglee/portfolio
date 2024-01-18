@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import {
   CheckIcon
 } from '@chakra-ui/icons';
@@ -12,36 +13,35 @@ import {
 } from '@chakra-ui/react';
 
 function InputArray({
-  values,
+  defaultValues,
   name,
-  register,
-  setValue,
 }) {
-  console.log(values);
-  const index = values.length - 1;
-  const onDelete = () => {
-    // 1. Remove value from list.
-    console.log("Hi");
+  const inputRef = useRef("");
+  const [inputArray, setInputArray] = useState(defaultValues ?? []);
+  const handleDelete = (index) => {
+    inputArray.slice(index, 1);
   }
-  const onAdd = () => {
-    // 1. Append value to list.
-    console.log("nub");
+  const handleAdd = (val) => {
+    setInputArray([...inputArray, inputRef.current]);
+    inputRef.current = "";
   }
-  // TODO(nubby): add `onChange`.
+  const handleChange = (val) => {
+    inputRef.current = val;
+  }
   return (
     <InputGroup>
       <VStack>
-        {values?.map((val) => <Box>{val}</Box>)}
+        <Box>
+          {inputArray?.map((val, index) => <Box key={index}>{val}</Box>)}
+        </Box>
         <HStack>
           <Input
-            {...register(
-              `${name}.${index}`
-            )}
+            onChange={(e) => handleChange(e.target.value)}
           />
           <IconButton
             aria-label="add-val"
             icon={<CheckIcon />}
-            onClick={onAdd}
+            onClick={handleAdd}
           />
         </HStack>
       </VStack>
