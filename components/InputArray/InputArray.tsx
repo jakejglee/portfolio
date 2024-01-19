@@ -1,8 +1,5 @@
 import { useRef, useState } from 'react';
 import {
-  CheckIcon
-} from '@chakra-ui/icons';
-import {
   Box,
   chakra,
   HStack,
@@ -12,38 +9,40 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
+import InputAdd from './InputAdd';
+import InputElement from './InputElement';
+
 function InputArray({
   defaultValues,
   name,
 }) {
-  const inputRef = useRef("");
   const [inputArray, setInputArray] = useState(defaultValues ?? []);
-  const handleDelete = (index) => {
-    inputArray.slice(index, 1);
+  const handleDelete = (id) => {
+    setInputArray(
+      inputArray.filter(i => i.id !== id)
+    );
   }
   const handleAdd = (val) => {
-    setInputArray([...inputArray, inputRef.current]);
-    inputRef.current = "";
-  }
-  const handleChange = (val) => {
-    inputRef.current = val;
+    setInputArray([...inputArray, {
+      id: inputArray.length,
+      value: val
+    }]);
   }
   return (
     <InputGroup>
       <VStack>
         <Box>
-          {inputArray?.map((val, index) => <Box key={index}>{val}</Box>)}
+          {inputArray?.map((i) => {
+            return (
+              <InputElement
+                key={i.id}
+                value={i}
+                onDelete={handleDelete}
+              />
+            )
+          })}
         </Box>
-        <HStack>
-          <Input
-            onChange={(e) => handleChange(e.target.value)}
-          />
-          <IconButton
-            aria-label="add-val"
-            icon={<CheckIcon />}
-            onClick={handleAdd}
-          />
-        </HStack>
+      <InputAdd onAdd={handleAdd} />
       </VStack>
     </InputGroup>
   )
