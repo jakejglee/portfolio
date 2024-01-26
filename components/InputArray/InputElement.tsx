@@ -3,6 +3,9 @@ import {
 } from '@chakra-ui/icons';
 import {
   Box,
+  Flex,
+  Grid,
+  GridItem,
   IconButton,
   HStack,
 } from '@chakra-ui/react';
@@ -12,14 +15,21 @@ function InputElement({
   onDelete,
 }) {
   return (
-    <HStack>
-      <Box>{value.id}:{value.value}</Box>
-      <IconButton
-        aria-label="rm-val"
-        icon={<CloseIcon />}
-        onClick={() => onDelete(value.id)}
-      />
-    </HStack>
+    <Box
+      bg="lightgrey"
+      borderRadius="8px"
+      borderWidth="1px"
+      padding={3}
+    >
+      <Flex>
+          <IconButton
+            aria-label="rm-val"
+            icon={<CloseIcon />}
+            onClick={() => onDelete(value.id)}
+          />
+          <Box>{value.value}</Box>
+      </Flex>
+    </Box>
   );
 }
 

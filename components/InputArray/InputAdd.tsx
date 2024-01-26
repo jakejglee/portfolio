@@ -9,24 +9,21 @@ import {
   Input,
 } from '@chakra-ui/react';
 function InputAdd({
+  value,
   onAdd,
   onChange,
 }) {
-  const [value, setValue] = useState("");
   return (
     <HStack>
       <Input
         placeholder="Input stuff here"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={onChange}
       />
       <IconButton
         aria-label="add-val"
         icon={<CheckIcon />}
-        onClick={() => {
-          setValue("");
-          onAdd(value);
-        }}
+        onClick={onAdd}
       />
     </HStack>
   );

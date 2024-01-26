@@ -9,6 +9,13 @@ import InputArray from '../../components/InputArray/InputArray';
 import styles from '../../styles/Home.module.css';
 
 function Sandbox() {
+  const formDefaults = {
+    test: [
+      "1111111",
+      "2333333",
+      "4444444"
+    ]
+  }
   const {
     register,
     formState: { isDirty },
@@ -17,12 +24,12 @@ function Sandbox() {
     handleSubmit,
   } = useForm<FieldValues>({
     defaultValues: {
-      test: ["default"]
+      test: formDefaults.test
     }
   });
 
-  const onSubmit = (args) => {
-    console.log("Moo.")
+  const onSubmit = (data) => {
+    console.log(data)
   }
 
   return (
@@ -32,8 +39,9 @@ function Sandbox() {
         <h1>Fun stuff lives here.</h1>
         <chakra.form id="test-form" onSubmit={handleSubmit(onSubmit)}>
           <InputArray
-            defaultValues={null}
+            defaultValues={getValues("test")}
             name="test"
+            setValue={setValue}
           />
           <Button
             type="submit"
