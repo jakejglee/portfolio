@@ -10,17 +10,24 @@ export default function Home() {
       <Banner />
       <main>
         <h1 className={styles.title}>
-          Jake Lee&apos;s Portfolio
+          Jake Lee
         </h1>
-
+        <p className={styles.subtitle}>
+          Jake is a Robotics, Controls, and Cyber-Physical Systems M.S. student 
+          and researcher at the University of California, Santa Cruz. He is
+          interested in using low-cost drones and sensor arrays to promote
+          sustainable farming practices.
+        </p>
+        <h2>
+          A heading
+        </h2>
         <p className={styles.description}>
           Selected works by Jake Lee/"nubby".
         </p>
-
         <div className={styles.grid}>
           <Link href="/sandbox" className={styles.card}>
             <h3>Sandbox &rarr;</h3>
-            <p>Testing playground.</p>
+            <p>Jake's code testing playground.</p>
           </Link>
         </div>
       </main>
