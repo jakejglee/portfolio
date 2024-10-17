@@ -18,9 +18,11 @@ export default function Home() {
           interested in using low-cost drones and sensor arrays to promote
           sustainable farming practices.
         </p>
-        <h2>
-          A heading
-        </h2>
+        <Link href="/cv" className={styles.card}>
+          <h2>
+            Resume
+          </h2>
+        </Link>
         <p className={styles.description}>
           Selected works by Jake Lee/"nubby".
         </p>

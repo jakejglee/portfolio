@@ -90,3 +90,8 @@
     flex-direction: column;
   }
 }
+
+#__next {
+	background: blue;
+	height: 100%;
+}
