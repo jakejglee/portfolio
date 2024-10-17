@@ -6,18 +6,21 @@ function CV() {
   return (
     <div >
       <Banner />
-      <main height="100%">
+      <main>
         <h1>Jake Lee's Resume</h1>
-        <iframe
-          border="none"
-          display="block"
-          frameBorder="0"
-          height="100%"
-          overflow-y="auto"
-          overflow-x="hidden"
-          width="100%"
-          src="pdfs/jake_lee.pdf"
-        />
+        <div className={global.container}>
+          <iframe
+            width="100%"
+            src="pdfs/fall2024-cv-jake_lee.pdf"
+          />
+        </div>
+        <h1>Jake Lee's Transcript</h1>
+        <div className={global.container}>
+          <iframe
+            width="100%"
+            src="pdfs/fall2024-transcript-jake_lee.pdf"
+          />
+        </div>
       </main>
     </div>
   );
